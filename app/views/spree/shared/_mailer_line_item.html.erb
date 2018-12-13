@@ -1,0 +1,29 @@
+
+
+<tr>
+  <td class="line six sub-columns">
+    <div class="img">
+      <%= cl_image_tag (line_item.product.images[0].attachment.url)%>
+    </div>
+    <strong>
+      <%= link_to raw(line_item.variant.product.name), spree.product_url(line_item.variant.product) %>
+    </strong> <br>
+    <%= raw(line_item.variant.options_text) -%> <br>
+    <%= line_item.variant.sku %>
+    <strong>
+      <%= line_item.variant.product.level == 'precommande' ? 'Précommande' : ''%>
+    </strong>
+
+  </td>
+  <td class="line six sub-columns last">
+    <%= line_item.quantity %> x <%= line_item.single_money %> = <%= line_item.display_amount %>
+  </td>
+</tr>
+
+<% if line_item.variant.product.level == 'precommande' %>
+  <tr>
+    <td>
+      <h5>Important !</h5><p>Vous avez des produits en précommande, nous vous informerons par email lorsque nous produirons ces produits, ou nous vous rembourserons en totalité</p>
+    </td>
+  </tr>
+<% end %>

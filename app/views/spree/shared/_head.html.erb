@@ -1,0 +1,83 @@
+  <meta charset="utf-8">
+  <title><%= title %></title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+  <%== meta_data_tags %>
+  <%= canonical_tag(current_store.url) %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= csrf_meta_tags %>
+  <%= render 'spree/shared/paths' %>
+  <%= cloudinary_js_config %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'spree/frontend/all', media: 'screen' %>
+  <%= javascript_include_tag 'spree/frontend/all' %>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <script src="//fb.me/react-with-addons-0.13.1.js"></script>
+
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/additional-methods.min.js' %>
+
+  <!-- Jquery mobile -->
+
+  <% if mobile_device? %>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <% end %>
+
+  <!-- specific head for pages  -->
+
+  <% if content_for? :for_head %>
+    <%= yield :for_head %>
+  <% end %>
+
+
+
+  <!-- Drift-->
+
+  <script>
+  !function() {
+    var t;
+    if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
+    t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+    t.factory = function(e) {
+      return function() {
+        var n;
+        return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+      };
+    }, t.methods.forEach(function(e) {
+      t[e] = t.factory(e);
+    }), t.load = function(t) {
+      var e, n, o, i;
+      e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
+      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
+      n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+    });
+  }();
+  drift.SNIPPET_VERSION = '0.3.1';
+  drift.load('a6ewy6f58zkf');
+  </script>
+
+  <!-- Cookie bar -->
+
+  <script type="text/javascript" src="//cdn.jsdelivr.net/cookie-bar/1/cookiebar-latest.min.js?forceLang=fr&theme=flying&tracking=1&thirdparty=1&always=1&hideDetailsBtn=1"></script>
+
+  <!-- Google Analytics -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-96790704-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+
+  <meta property="fb:admins" content="100002413776708"/>
+  <meta property="fb:app_id" content="1699983500299189"/>
+
+  <%= yield :head %>
+  <%= render 'spree/shared/translations' %>

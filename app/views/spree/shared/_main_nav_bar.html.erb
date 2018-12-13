@@ -1,0 +1,105 @@
+<%= render "shared/designermodal" %>
+<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="navbar-header page-scroll">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
+    </button>
+
+    <a href="/">
+      <div class="brand-cont">
+        <div class="navbar-brand page-scroll" style='position: absolute;' >Unidraft
+        </div>
+      </div>
+    </a>
+    <div id="nav-mobile" class="hidden-md-up">
+      <div class="account">
+        <% if current_spree_user %>
+          <%= link_to spree.account_path(current_spree_user) do %>
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+          <% end %>
+        <% else %>
+          <%= link_to spree.login_path do %>
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div id="link-to-cart"  data-hook>
+<!--         <noscript>
+ -->     <%= link_to_cart %>
+        <!-- </noscript> -->
+        <!-- &nbsp; -->
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li id='youredesigner'>
+          <a href="/you_are_designer"  type="button" class="text-center"> <%=  Spree.t("you're designer") %> </a>
+        </li>
+        <li class="hidden">
+            <a href="#page-top"></a>
+        </li>
+
+          <li>
+            <a class="page-scroll" href="/products"><p><%= Spree.t('les-ventes') %></p></a>
+        </li>
+        <li>
+            <a class="page-scroll" href="/drafts"><p><%= Spree.t('les-votes') %></p></a>
+        </li>
+
+
+        <li>
+          <a class="page-scroll" href="/designers"><p><%= Spree.t('les-createurs') %></p></a>
+        </li>
+        <li class="hidden-md hidden-sm hidden-lg">
+          <%= link_to 'se deconnecter', spree.logout_path, class: 'hidden-md hidden-sm hidden-lg' %>
+        </li>
+
+        <li id="myaccount" class='hidden-xs'>
+          <% if current_spree_user %>
+            <%= link_to spree.account_path(current_spree_user) do %>
+              <i class="fa fa-user-o" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to 'X', spree.logout_path  %>
+          <% else %>
+            <%= link_to spree.login_path do %>
+              <i class="fa fa-user-o" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </li>
+        <% unless mobile_device? %>
+          <li id="link-to-cart" data-hook>
+              <%= link_to_cart %>
+            &nbsp;
+          </li>
+        <script>Spree.fetch_cart()</script>
+
+        <% end %>
+        <!-- <div id="resume-cart" style="display: none;">Article ajouté au panier, commandez</div> -->
+      </ul>
+    </div>
+      <!-- /.navbar-collapse -->
+  </div>
+  <!-- <script>Spree.fetch_cart()</script> -->
+      <!-- /.container-fluid -->
+  </nav>
+
+
+
+
+<div style="display: none; width:100%; height:100%; position:fixed; background:#000000; opacity: 0.3; filter:alpha(opacity=0.4); z-index:999998;" id="exitpopup_bg">
+
+</div>
+<div id="exitpopup">
+    <h1>Avant de partir !</h1>
+    <h2>Restons en contact</h2>
+    <div class="fb-like" data-href="https://www.facebook.com/unidraft/" data-layout="box_count" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+</div>

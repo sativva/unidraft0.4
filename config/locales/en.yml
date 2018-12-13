@@ -1,0 +1,39 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  spree:
+    les-ventes: 'Sales'
+    les-votes: 'Votes'
+    les-createurs: 'Designers'
+    mon-compte: 'My account'
+    se-deconnecter: 'Log out'
+    panier: 'Cart'
+    vide: 'Empty'
+    price: 'Price'
+    tagline: "Tomorrow's designers"
+    qui-sommes-nous: 'About us'
+
+    adjustment_labels:
+      tax_rates:
+        including_tax: '%{name}%{amount} (Included in Price)'
+        excluding_tax: '%{name}%{amount}'
+

@@ -1,0 +1,24 @@
+<% @message = Spree::Message.new %>
+<div class="wrap-50">
+<%= form_for @message, url: spree.message_path do |message_form| %>
+  <fieldset>
+    <div class="field">
+      <%= message_form.text_field :name, placeholder: "Nom" %>
+    </div>
+
+    <div class="field">
+      <%= message_form.email_field :email, placeholder: "Email"%>
+    </div>
+
+    <div class="field">
+      <%= message_form.text_area :content, placeholder: "Message"%>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div class="field">
+      <%= message_form.submit "Envoyer", class: 'btn-violet' %>
+    </div>
+  </fieldset>
+<% end %>
+</div>

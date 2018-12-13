@@ -1,0 +1,23 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:designers), spree.admin_designers_path %> /
+<% end %>
+
+<% content_for :sidebar do %>
+  <ul class="nav nav-pills nav-stacked" data-hook="admin_designer_tab_options">
+    <li<%== ' class="active"' if current == :account %>>
+      <%= link_to_with_icon 'designer', Spree.t(:"admin.designer.account"), spree.edit_admin_designer_path(@designer) %>
+    </li>
+<!--     <li<%#== ' class="active"' if current == :address %>>
+      <%#= link_to_with_icon 'designer', Spree.t(:"admin.designer.addresses"), spree.addresses_admin_designer_path(@designer) %>
+    </li> -->
+    <li<%#== ' class="active"' if current == :orders %>>
+      <%#= link_to_with_icon 'shopping-cart', Spree.t(:"admin.designer.orders"), spree.orders_admin_designer_path(@designer) %>
+    </li>
+    <li<%#== ' class="active"' if current == :items %>>
+      <%#= link_to_with_icon 'edit', Spree.t(:"admin.designer.items"), spree.items_admin_designer_path(@designer) %>
+    </li>
+    <li<%#== ' class="active"' if current == :store_credits %>>
+      <%#= link_to_with_icon 'money', Spree.t(:"admin.designer.store_credits"), spree.admin_designer_store_credits_path(@designer) %>
+    </li>
+  </ul>
+<% end %>

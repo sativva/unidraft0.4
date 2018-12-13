@@ -1,0 +1,27 @@
+toolbar:
+  - undo redo | insert | styleselect | alignle - styleselect | bold italic
+  - link | uploadimage | imagetools | print preview media | forecolor backcolor emoticons | codesample help
+plugins:
+  - image
+  - uploadimage
+  - table
+  - fullscreen
+  - preview
+  - advlist autolink lists link image charmap print preview hr anchor pagebreak
+  - searchreplace wordcount visualblocks visualchars code fullscreen
+  - insertdatetime media nonbreaking save table contextmenu directionality
+  - emoticons template paste textcolor colorpicker textpattern imagetools codesample
+imagetools_cors_hosts:
+  - unidraft.co
+  - undiraft0-3.herokuapp.com
+  - localhost:3000
+theme_advanced_toolbar_location: top
+theme_advanced_toolbar_align: left
+theme_advanced_statusbar_location: bottom
+theme_advanced_buttons3_add:
+  - tablecontrols
+  - fullscreen
+  - media
+  - preview
+  - link
+  - image

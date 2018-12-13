@@ -1,0 +1,6 @@
+restat db in prep from prod
+
+heroku pg:backups:capture -r live
+heroku pg:backups:download -r live
+URL_WITHOUT_QUOTES DATABASE_URL = heroku pg:backups:url -r live
+heroku pg:backups:restore URL_WITHOUT_QUOTES DATABASE_URL -r prep

@@ -1,0 +1,45 @@
+#clear_cart_link {
+  display: inline-grid;
+}
+
+#checkout {
+
+  #errorExplanation.alert {
+      margin: 0;
+      width: 90%;
+      height: 15vh;
+      overflow: scroll;
+      text-align: center;
+      color: white;
+      position: fixed;
+      z-index: 600000;
+      margin-top: 4px;
+      /* margin-left: 4px; */
+  }
+ #billing, #checkout_form_address #shipping {
+  @media (max-width: 768px) {
+  .panel-body {
+    height: 850px;
+  }
+  }
+  .panel-body {
+    height: 700px;
+  }
+  .inner {
+    margin: 50px 22px;
+  }
+  #bcountry, #order_ship_address_attributes_country_id {
+    width: 90%;
+  }
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #fff;
+    background-color: $button;
+}
+
+#checkout_form_address #shipping .inner {
+    margin: 100px 22px;
+
+}
+}

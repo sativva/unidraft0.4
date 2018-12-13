@@ -1,0 +1,11 @@
+<div style="margin: 0 10px; padding: 20px;">
+<h3 style="margin-top: 0;">Connectez-vous pour voter</h3>
+
+<h5>J'ai déja un compte</h5>
+<%= link_to "s'identifier", spree.login_path, class: ' btn btn-large btn-violet w100'  %>
+<h5>Pas de compte ?</h5><p>Connexion hyper rapide</p>
+<%= link_to "Connexion par Facebook", "/login/auth/facebook", id: "sign_in", class: 'btn btn-large btn-success w100'%> <br><br>
+<%= link_to 'Connexion par mail', spree.signup_path, class: 'btn btn-large btn-violet w100' %>
+
+<div class="fb-like" data-href="https://www.facebook.com/unidraft" data-layout="box_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+</div>

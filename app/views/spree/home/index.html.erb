@@ -1,0 +1,394 @@
+<% @body_id = 'home-page' %>
+
+<html xmlns:fb="http://www.facebook.com/2008/fbml"
+    xmlns:og="http://opengraphprotocol.org/schema/"
+    xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    lang="en" dir="ltr">
+  <head>
+  </head>
+  <body id="page-top" class="index">
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.9&appId=1699983500299189";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="fb-root"></div>
+    <div class="home-wrap">
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.9&appId=1699983500299189";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      </script>
+      <header>
+        <div class="container">
+         <%= cl_image_tag("Unidraft_shoot_3f_v3_rlcdhz.jpg", :gravity=>"faces:auto", :height=>940, :width=>2048, :x=>704, :y=>1718, :crop=>"crop", class: 'home-banner') %>
+         <div class="typewriter">
+           <h1>Shoppez - Votez</h1>
+         </div>
+        </div>
+      </header>
+
+
+<!-- GRID -->
+      <div class="grid-masonry">
+        <div class="grid-item grid-sizer">
+          <%= link_to draft_path(@drafts_on_top[0]) do  %>
+            <%= image_tag(@drafts_on_top[0].images[0].attachment.url(:large)) %>
+            <div class="hover" style="display: none">
+              <div class="content-block">
+                <h4><%= @drafts_on_top[0].name %></h4>
+              </div>
+            </div>
+          <% end %>
+          <% if spree_current_user %>
+            <div class="inline">
+              <div class="likes inline" id="likes_<%= @drafts_on_top[0].id %>" >
+                <div class="likes_count" style="margin-right: 10px;"><%= (display_likes @drafts_on_top[0]).to_i + 20 %></div>
+
+              <% if spree_current_user.liked? @drafts_on_top[0] %>
+                <%= link_to '', unvote_product_path(@drafts_on_top[0].id), remote: true,
+                                      id: "like_#{@drafts_on_top[0].id}",
+                                      class: "glyphicon glyphicon-heart" %>
+              <% else %>
+                <%= link_to '', vote2_product_path(@drafts_on_top[0].id), remote: true,
+                                      id: "like_#{@drafts_on_top[0].id}",
+                                      class: "glyphicon glyphicon-heart-empty" %>
+              <% end %>
+              <p class="connect" style="margin-left: 10px; line-height: 36px;">Votez !</p>
+              </div>
+            </div>
+          <% else %>
+            <div class="likes inline" id="likes_<%= @drafts_on_top[0].id %>">
+              <div class="likes_count" style="margin-right: 10px;"><%= (display_likes @drafts_on_top[0]).to_i + 20 %></div>
+              <%= link_to '',"#connect-modal",  id: "like_#{@drafts_on_top[0].id}",
+                                      class: "glyphicon glyphicon-heart-empty", "data-toggle" => "modal"  %>
+              <p class="connect" style="margin-left: 10px; line-height: 36px;">Votez !</p>
+            </div>
+          <% end %>
+          <br>
+        </div>
+
+        <div class="gutter-sizer"></div>
+
+        <div class="grid-item grid-item--heigth2">
+          <%= link_to draft_path(@drafts_on_top[1]) do  %>
+            <%= image_tag(@drafts_on_top[1].images[0].attachment.url(:large)) %>
+            <div class="hover" style="display: none">
+              <div class="content-block">
+                <h4><%= @drafts_on_top[1].name %></h4>
+              </div>
+            </div>
+          <% end %>
+          <% if spree_current_user %>
+            <div class="inline">
+              <div class="likes inline" id="likes_<%= @drafts_on_top[1].id %>" >
+                <div class="likes_count" style="margin-right: 10px;"><%= (display_likes @drafts_on_top[1]).to_i + 20 %></div>
+
+              <% if spree_current_user.liked? @drafts_on_top[1] %>
+                <%= link_to '', unvote_product_path(@drafts_on_top[1].id), remote: true,
+                                      id: "like_#{@drafts_on_top[1].id}",
+                                      class: "glyphicon glyphicon-heart" %>
+              <% else %>
+                <%= link_to '', vote2_product_path(@drafts_on_top[1].id), remote: true,
+                                      id: "like_#{@drafts_on_top[1].id}",
+                                      class: "glyphicon glyphicon-heart-empty" %>
+              <% end %>
+              <p class="connect" style="margin-left: 10px; line-height: 36px;">Votez !</p>
+
+               </div>
+            </div>
+          <% else %>
+            <div class="likes inline" id="likes_<%= @drafts_on_top[1].id %>">
+              <div class="likes_count" style="margin-right: 10px;"><%= (display_likes @drafts_on_top[1]).to_i + 20 %></div>
+              <%= link_to '',"#connect-modal",  id: "like_#{@drafts_on_top[1].id}",
+                                      class: "glyphicon glyphicon-heart-empty", "data-toggle" => "modal"  %>
+              <p class="connect" style="margin-left: 10px; line-height: 36px;">Votez !</p>
+            </div>
+
+          <% end %>
+        </div>
+
+        <div class="grid-item">
+          <%= link_to draft_path(@drafts_on_top[2]) do  %>
+            <%= image_tag(@drafts_on_top[2].images[0].attachment.url(:large)) %>
+            <p class="home-mobile-price hidden-sm hidden-md hidden-lg"><%= @product2.price.to_i %> € </p>
+
+            <div class="hover" style="display: none">
+              <div class="content-block">
+                <h4><%= @drafts_on_top[2].name %></h4>
+              </div>
+            </div>
+          <% end %>
+          <% if spree_current_user %>
+            <div class="inline">
+              <div class="likes inline" id="likes_<%= @drafts_on_top[2].id %>" >
+                <div class="likes_count" style="margin-right: 10px;"><%= (display_likes @drafts_on_top[2]).to_i + 20 %></div>
+
+              <% if spree_current_user.liked? @drafts_on_top[2] %>
+                <%= link_to '', unvote_product_path(@drafts_on_top[2].id), remote: true,
+                                      id: "like_#{@drafts_on_top[2].id}",
+                                      class: "glyphicon glyphicon-heart" %>
+              <% else %>
+                <%= link_to '', vote2_product_path(@drafts_on_top[2].id), remote: true,
+                                      id: "like_#{@drafts_on_top[2].id}",
+                                      class: "glyphicon glyphicon-heart-empty" %>
+              <% end %>
+              <p class="connect" style="margin-left: 10px; line-height: 36px;">Votez !</p>
+
+               </div>
+            </div>
+          <% else %>
+            <div class="likes inline" id="likes_<%= @drafts_on_top[2].id %>">
+              <div class="likes_count" style="margin-right: 10px;"><%= (display_likes @drafts_on_top[2]).to_i + 20 %></div>
+              <%= link_to '',"#connect-modal",  id: "like_#{@drafts_on_top[2].id}",
+                                      class: "glyphicon glyphicon-heart-empty", "data-toggle" => "modal"  %>
+              <p class="connect" style="margin-left: 10px; line-height: 36px;">Votez !</p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="grid-item grid-item--heigth3 text-block" style="height: 143px">
+          <br><br><br>
+
+          <h3>VOTEZ</h3>
+        </div>
+
+
+
+
+
+        <div class="grid-item grid-item-top">
+          <%= link_to product_path(@product1) do  %>
+            <%= image_tag(@product1.images[1].attachment.url(:large)) %>
+            <p class="home-mobile-price hidden-sm hidden-md hidden-lg"><%= @product1.price.to_i %> € </p>
+
+            <div class="hover hidden-xs" style="display: none">
+              <div class="content-block">
+                <h4><%= @product1.name %></h4>
+                <div class="btn-black">Découvrir</div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+
+        <div class="grid-item grid-item-top  hidden-xs">
+          <%= link_to product_path(@product2) do  %>
+            <%= image_tag(@product2.images[2].attachment.url(:large)) %>
+            <p class="home-mobile-price hidden-sm hidden-md hidden-lg"><%= @product2.price.to_i %> € </p>
+
+            <div class="hover" style="display: none">
+              <div class="content-block">
+                <h4><%= @product2.name %></h4>
+                <div class="btn-black">Découvrir</div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="grid-item grid-item--heigth4 text-block" style="height: 143px">
+          <h3>SHOPPEZ</h3>
+
+        </div>
+
+        <div class="grid-item grid-item--heigth2">
+          <%= link_to product_path(@product1) do  %>
+            <%= image_tag(@product1.images[2].attachment.url(:large)) %>
+
+            <p class="home-mobile-price hidden-sm hidden-md hidden-lg"><%= @product1.price.to_i %> € </p>
+
+            <div class="hover" style="display: none">
+              <div class="content-block">
+                <h4><%= @product1.name %></h4>
+                <div class="btn-black">Découvrir</div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+
+      <br>
+      <div class="home-text-block">
+        <hr style="width: 75%;margin:auto; margin-bottom: 15px">
+        <p class="center" style="width: 75%;margin:auto">Unidraft collabore avec de jeunes créateurs afin de les faire émerger. Leurs croquis sont soumis aux votes des internautes. Nous produisons en France et commercialisons sur notre site les créations avec le plus de votes.</p>
+        <hr style="width: 75%;margin:auto; margin-top: 15px">
+      </div>
+      <br>
+
+      <div class="row">
+        <div id="draft-carousel" class="col-xs-12 col-sm-6">
+          <h3 class="center"><%= Spree.t('Votez pour vos') %> <br><span class="violet" ><%= Spree.t('créations préferées') %></span></h3>
+          <div class="wrapper">
+            <div class="carousel">
+              <div class="inner">
+                <div class="slide active">
+
+                  <a href='<%= mobile_device? ?  drafts_path : draft_path(@drafts[0]) %>'>
+                    <%= large_image(@drafts[0], itemprop: "image", class: 'featured') %>
+                    <h4><%= @drafts[0].name %></h4></a>
+                    <% @product = @drafts[0] %>
+                    <% if spree_current_user %>
+                      <div class="inline">
+                        <div class="likes" id="likes_<%= @product.id %>" >
+                          <%= (display_likes @product).to_i + 20 %>
+                        </div>
+                        <% if spree_current_user.liked? @product %>
+                          <%= link_to '', unvote_product_path(@product.id), remote: true,
+                                                id: "like_#{@product.id}",
+                                                class: "glyphicon glyphicon-heart" %>
+                        <% else %>
+                          <%= link_to '', vote2_product_path(@product.id), remote: true,
+                                                id: "like_#{@product.id}",
+                                                class: "glyphicon glyphicon-heart-empty" %>
+                        <% end %>
+                        <br>
+                      </div>
+                      <p class="connect">Votez !</p>
+
+                      <% else %>
+                        <div class="likes" id="likes_<%= @product.id %>">
+                          <%= (display_likes @product).to_i + 20 %> <i class="fa fa-heart"></i>
+                          <%= link_to spree.login_path do %>
+                            <p class="connect"> Pour voter, connectez-vous !</p>
+                          <% end %>
+
+                        </div>
+
+                    <% end %>
+                       <br>
+                </div>
+                <% @drafts[1..-1].each do |draft| %>
+                  <% @product = draft %>
+
+                  <div class="slide">
+                    <a href='<%= mobile_device? ?  drafts_path : draft_path(draft) %>'>
+                    <%= large_image(draft, itemprop: "image", class: 'featured') %>
+                    <h4><%= draft.name %></h4></a>
+                    <% if spree_current_user %>
+                      <div class="inline">
+                        <div class="likes" id="likes_<%= @product.id %>" >
+                          <%= (display_likes @product).to_i + 20 %>
+                        </div>
+                        <% if spree_current_user.liked? @product %>
+                          <%= link_to '', unvote_product_path(@product.id), remote: true,
+                                                id: "like_#{@product.id}",
+                                                class: "glyphicon glyphicon-heart" %>
+                        <% else %>
+                          <%= link_to '', vote2_product_path(@product.id), remote: true,
+                                                id: "like_#{@product.id}",
+                                                class: "glyphicon glyphicon-heart-empty" %>
+                        <% end %>
+                        <br>
+
+                      </div>
+                      <p class="connect">Votez !</p>
+                      <% else %>
+                        <div class="likes" id="likes_<%= @product.id %>">
+                          <%= (display_likes @product).to_i + 20 %> <i class="fa fa-heart"></i>
+                          <%= link_to spree.login_path do %>
+                            <p class="connect">Pour voter, connectez-vous !</p>
+                          <% end %>
+
+                        </div>
+                    <% end %>
+                       <br>
+                  </div>
+                <% end %>
+              </div>
+              <div class="arrow arrow-left hidden-xs"></div>
+              <div class="arrow arrow-right hidden-xs"></div>
+            </div>
+
+          </div>
+        </div>
+        <div id="designers-carousel" class="col-xs-12 col-sm-6">
+          <h3 class="center"><%= Spree.t('Découvrez nos') %> <br> <span class="violet"><%= Spree.t(' créateurs') %></span></h3>
+
+            <div class="wrapper">
+              <div class="carousel">
+                <div class="inner">
+                  <div class="slide active">
+                    <a href='<%= designer_path(@designers[0]) %>'><%= cl_image_tag(@designers[0].banner(:large),crop: "crop",   gravity: "faces", height: 523, width: 349, secure: true, class: "d-block img-fluid") %>
+
+                    </a>
+                    <h4><%= @designers[0].givenname %> <%= @designers[0].lastname %></h4>
+                    <p><%=  @designers[0].school %></p>
+                    <br>
+                    <%= link_to Spree.t('Découvrir'), designer_path(@designers.first), class: 'btn-violet' %>
+                  </div>
+                  <% @designers[1..-1].each do |designer| %>
+                      <div class="slide">
+                        <a href='<%= designer_path(designer) %>'>
+
+                          <img src="http://res.cloudinary.com/uni-draft/image/upload/c_crop,g_faces,h_523,w_349/<%= designer.banner.path(:large) %>" alt="<%= designer.banner(:large) %>"  class="d-block img-fluid">
+                         <!--  -->
+
+                        </a>
+                        <h4><%= designer.givenname %> <%= designer.lastname %></h4>
+                        <p><%=  designer.school %></p>
+                        <br>
+                        <%= link_to Spree.t('Découvrir'), designer_path(designer), class: 'btn-violet'  %>
+                      </div>
+
+
+                  <% end %>
+                </div>
+                <div class="arrow arrow-left hidden-xs"></div>
+                <div class="arrow arrow-right hidden-xs"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br><br><br>
+
+      </div>
+
+    </div>
+    <div class="modal" id="connect-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: hide">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <%= render partial: 'shared/connect' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="" id="FBModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: hide">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header hidden-xs">
+            Pour voter connectez vous !
+            <div class="closenow close">
+              <span aria-hidden="true">&times;</span>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="closenow close hidden-sm hidden-md hidden-lg">
+              <span aria-hidden="true">&times;</span>
+            </div>
+
+            <%= link_to "FB connect", "/login/auth/facebook", id: "sign_in", class: 'btn btn-large btn-success w100'%> <br><br>
+            <div class="inline">
+            <div class="fb-like" data-href="https://www.facebook.com/unidraft" data-layout="box_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+            <%= link_to spree.login_path, class: "btn-violet small", style: "padding: 5px 5px; margin-left: 10px;" do %>
+              <p class="connect center">connexion par email</p>
+            <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+</html>

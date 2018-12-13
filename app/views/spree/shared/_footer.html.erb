@@ -1,0 +1,275 @@
+<%= render partial: 'spree/shared/legalmodals' %>
+<footer>
+    <hr style="padding: 0; margin: 0; color: lightgray;">
+    <div class="wrap">
+      <div class="container">
+        <div class="row">
+
+          <div class="col col-xs-12 col-md-3">
+            <div><h5>Unidraft</h5><br></div>
+            <a type="button"  data-toggle="modal" data-target="#contact-modal-jobs"><span class="copyright"><%= Spree.t("Offres d'emploi") %></span></a><br>
+            <a type="button"  href='/you_are_designer'><span class="copyright"><%=  Spree.t('Vous êtes créateur') %></span></a><br>
+            <a type="button"  data-toggle="modal" data-target="#contact-modal"><span class="copyright"><%= Spree.t("Contacts") %></span></a><br>
+          </div>
+          <div class="col col-xs-12 col-md-3">
+            <div><h5>A PROPOS</h5><br></div>
+            <a type="button"  href="/about" "><span class="copyright"><%= Spree.t("Qui sommes nous") %></span></a><br>
+            <a type="button"  data-toggle="modal" data-target="#CGV"><span class="copyright">CGV</span></a><br>
+            <a type="button"  data-toggle="modal" data-target="#mentions-legales"><span class="copyright">Mentions légales</span></a><br>
+            <a type="button"  data-toggle="modal" href="/faq"><span class="copyright">FAQ</span></a><br>
+            <!-- <a type="button"  data-toggle="modal" data-target="#contact-modal-jobs"><span class="copyright">FR/EN</span></a><br> -->
+          </div>
+
+          <div class="col col-xs-12 col-md-3">
+            <div><h5><%= Spree.t("Restez Connecté") %></h5><br></div>
+            <p>Abonnez-vous à la newsletter pour recevoir nos offres exclusives</p>
+
+
+
+
+<!-- Begin MailChimp Signup Form -->
+            <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+            <style type="text/css">
+              #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+              /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+                 We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+            </style>
+            <div id="mc_embed_signup">
+              <form action="//unidraft.us15.list-manage.com/subscribe/post?u=cb202298a257e5bf8a302cc00&amp;id=eec24a638c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate style='padding-left: 0'>
+                  <div id="mc_embed_signup_scroll">
+
+                    <div class="mc-field-group" style="width: 100%; padding-right: 4px">
+                      <input type="email" style="width: 100%; padding-right: 4px; height: 33px;" value="" name="EMAIL" placeholder="email" class="required email" id="mce-EMAIL">
+                    </div>
+                       <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_cb202298a257e5bf8a302cc00_eec24a638c" tabindex="-1" value=""></div>
+                    <div class="clear"><input type="submit" value="Souscrire" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                  </div>
+                  <div id="mce-responses" class="clear">
+                      <div class="response" id="mce-error-response" style="display:none"></div>
+                      <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+              </form>
+            </div>
+
+
+            <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+            <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text'; /*
+             * Translated default messages for the $ validation plugin.
+             * Locale: FR
+             */
+            $.extend($.validator.messages, {
+                    required: "Ce champ est requis.",
+                    remote: "Veuillez remplir ce champ pour continuer.",
+                    email: "Veuillez entrer une adresse email valide.",
+                    url: "Veuillez entrer une URL valide.",
+                    date: "Veuillez entrer une date valide.",
+                    dateISO: "Veuillez entrer une date valide (ISO).",
+                    number: "Veuillez entrer un nombre valide.",
+                    digits: "Veuillez entrer (seulement) une valeur numérique.",
+                    creditcard: "Veuillez entrer un numéro de carte de crédit valide.",
+                    equalTo: "Veuillez entrer une nouvelle fois la même valeur.",
+                    accept: "Veuillez entrer une valeur avec une extension valide.",
+                    maxlength: $.validator.format("Veuillez ne pas entrer plus de {0} caractères."),
+                    minlength: $.validator.format("Veuillez entrer au moins {0} caractères."),
+                    rangelength: $.validator.format("Veuillez entrer entre {0} et {1} caractères."),
+                    range: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
+                    max: $.validator.format("Veuillez entrer une valeur inférieure ou égale à {0}."),
+                    min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}.")
+            });}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
+
+<!--End mc_embed_signup-->
+
+          </div>
+
+
+
+<!--End mc_embed_signup-->
+            <!--End mc_embed_signup-->
+
+          <div class="col col-xs-12 col-md-3">
+            <div><h5>suivez-nous</h5><br></div>
+            <ul class="share-links list-inline">
+              <li class="share-link"><a href="https://www.facebook.com/unidraft" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></a></i></li>
+              <li class="share-link"><a href="https://www.instagram.com/unidraft" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul><br>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</footer>
+
+
+<div class="modal fade" id="contact-modal-jobs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5 class="modal-title" id="exampleModalLabel">Keep in touch</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h3> Vous êtes motivé, avez envie d'évoluer en mode start-up ? contactez-nous !</h3>
+                        <div class="row">
+                          <div class="col-lg-12">
+                              <div class="container-content">
+                                <div class="container">
+                                  <%# render "spree/messages/new" %>
+                                  <%= render "spree/messages/new" %>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                        <h3 class="section-subheading text-muted">Nous recherchons :</h3>
+                        <h4> - Responsable de production</h4>
+                        <p><br><br>
+Type de contrat: CDI<br>
+Ville: Paris<br>
+Disponibilité : ASAP<br>
+<br>
+Principales tâches :<br>
+
+• S’assurer du suivi des matières premières.<br>
+• Gérer le planning avec nos différents atelier de production<br>
+• Organiser et gérer des plannings de livraison<br>
+• Définir le niveau d’accompagnement requis pour les différents fabricants<br>
+• Piloter les processus Qualité<br>
+• Formalisation de Cahiers des Charges pour les fournisseurs et ateliers<br>
+<br>
+Profil recherché:<br>
+<br>
+• Première expérience en gestion de production textile<br>
+• Connaissance des sous-traitants et du processus de production Made in France<br>
+• Capacité à manager une équipe<br>
+• Bonne capacité relationnelle<br>
+• Aisance avec les systèmes d’information<br>
+• Goût pour l’opérationnel, sens des priorités et réactivité<br>
+</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal contacts -->
+    <div class="modal fade" id="contact-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h5 class="modal-title" id="exampleModalLabel">Keep in touch</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <section id="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2 class="section-heading">Contact Us</h2>
+                            <h3 class="section-subheading text-muted">Envoyez-nous un petit mot</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="container-content">
+                              <div class="container">
+                                <%= render "spree/messages/new" %>
+                                <div id="share" class="center">
+                                <h3>Suivez-nous sur nos réseaux</h3>
+                                <ul class="share-links list-inline">
+                                  <li class="share-link"><a href="https://www.facebook.com/unidraft" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></a></i></li>
+                                  <li class="share-link"><a href="https://www.instagram.com/thomasindoor/?ref=badge" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
+                        <!--           <li>
+                                  <%# if cookies[:saved_subscribers] %>
+                                    Merci !
+                                  <%# else %>
+                                    <h4>Inscrivez-vous à la newsletter</h4>
+                                    <%#= form_for @subscriber do |f| %>
+                                      <%##= f.text_field :name, placeholder: "Nom"  %>
+                                      <%#= f.email_field :email, placeholder: "Email" %>
+                                      <%#= f.submit "Youpi", class: 'btn btn-primary'  %>
+                                    <%# end %>
+                                  <%# end %>
+                                  </li> -->
+                                </ul>
+
+                              </div>
+
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Modal contacts -->
+<!-- Modal designers -->
+   <div class="modal fade" id="contact-modal-designer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h5 class="modal-title" id="exampleModalLabel">Keep in touch</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <section id="contact">
+                 <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2 class="section-heading">Contact Us</h2>
+                            <h3 class="section-subheading text-muted">Tu es créateur, ou étudiant créateur, tu veux voir tes créations produites et mises en vente ? Alors on peut peut-être travailler ensemble... Envoie nous un petit mot !</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="container-content">
+                              <div class="container">
+                                <%= render "spree/messages/new" %>
+                                <div id="share" class="center">
+                                      <h3>Suivez-nous sur nos réseaux</h3>
+                                      <ul class="share-links list-inline">
+                                        <li class="share-link"><a href="https://www.facebook.com/unidraft" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></a></i></li>
+                                        <li class="share-link"><a href="https://www.instagram.com/thomasindoor/?ref=badge" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <!--         <li>
+                                        <%# if cookies[:saved_subscribers] %>
+                                          Merci !
+                                        <%# else %>
+                                          <h4>Inscrivez-vous à la newsletter</h4>
+                                          <%#= form_for @subscriber do |f| %>
+                                            <%##= f.text_field :name, placeholder: "Nom"  %>
+                                            <%#= f.email_field :email, placeholder: "Email" %>
+                                            <%#= f.submit "Youpi", class: 'btn btn-primary'  %>
+                                          <%# end %>
+                                        <%# end %>
+                                        </li> -->
+                                      </ul>
+
+                                    </div>
+
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Modal designers -->

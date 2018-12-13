@@ -1,0 +1,252 @@
+<% if @product.level != 'croquis' %>
+
+
+  <% @body_id = 'product-details' %>
+
+  <% unless mobile_device? %>
+    <div class="wrap">
+  <% end %>
+
+  <%#= breadcrumbs(@taxon) %>
+  <% cache cache_key_for_product do %>
+    <div data-hook="product_show" class="row" itemscope itemtype="https://schema.org/Product">
+      <div class="col-xs-12 col-sm-8" data-hook="product_left_part">
+        <div data-hook="product_left_part_wrap">
+          <div id="product-images" data-hook="product_images" class="hidden-xs">
+            <div id="thumbnails" data-hook>
+              <%= render partial: 'thumbnails' %>
+              <div class="share-socials">
+                <h6><%= Spree.t('Partagez') %></h6>
+                  <div class="share">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=#{base_url + original_fullpath}" target="_blank">
+                      <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a class="twitter-share-button"
+                      href="https://twitter.com/intent/tweet?text=<%= request.original_url%>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.pinterest.com/pin/create/button/" target="_blank">
+                      <i class="fa fa-pinterest" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+
+              <div id="main-image" class="panel panel-default" data-hook>
+                <div class="panel-body text-center">
+                  <%= large_image(@product, itemprop: "image") %>
+                </div>
+              </div>
+
+            </div>
+
+            <div id="product-images" data-role="page" data-hook="product_images" class="hidden-sm hidden-md hidden-lg mobile">
+              <div id="main-image" class="panel panel-default" data-hook>
+                <div class="panel-body text-center thumbs">
+                <ul id="product-carousel" class="pord-carousel" data-hook >
+                  <% @product.images.each do |i| %>
+                    <li class='tmb-all tmb-<%= i.viewable.id %>'>
+                      <%= cl_image_tag(i.attachment(:large), class: "thumbnail") %>
+                    </li>
+                  <% end %>
+
+                  <% if @product.has_variants? %>
+                    <% @product.variant_images.each do |i| %>
+                      <% next if @product.images.include?(i) %>
+                      <li class='vtmb tmb-<%= i.viewable.id %>'>
+                        <%= link_to(image_tag(i.attachment.url(:large), class: "thumbnail"), i.attachment.url(:large)) %>
+                      </li>
+                    <% end %>
+                  <% end %>
+                </ul>
+                <% if @product.images.length > 2 %>
+                  <div class="arrow arrow-left"></div>
+                  <div class="arrow arrow-right"></div>
+                <% end %>
+
+                </div>
+              </div>
+              <script>
+                $('.arrow-left').on('click touch swipe', function(){
+                  $("#product-carousel").animate({marginLeft:-120},800,function(){
+                     $(this).css({marginLeft:0}).find("li:last").after($(this).find("li:first"));
+                  })
+                });
+                $('.arrow-right').on('click touch swipe', function(){
+                  $("#product-carousel").animate({marginRight:-120},800,function(){
+                     $(this).css({marginRight:0}).find("li:last").after($(this).find("li:first"));
+                  })
+                });
+
+
+                // $(function() {
+                //   $("img").swipe( {
+                //     //Generic swipe handler for all directions
+                //     swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+                //       $("#product-carousel").animate({marginLeft:-100},800,function(){
+                //      $(this).css({marginLeft:0}.find("li:last").after($(this).find("li:first"));
+                //   })
+                //     }
+                //   });
+
+                //   //Set some options later
+                //   $("#test").swipe( {fingers:2} );
+                // });
+              </script>
+
+            </div>
+
+
+  <!--    <div data-hook="product_properties">
+            <%#= render partial: 'properties' %>
+          </div> -->
+
+            <div data-hook="promotions">
+              <%= render partial: 'promotions' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4" data-hook="product_right_part">
+          <div data-hook="product_right_part_wrap">
+            <div id="product-description" data-hook="product_description">
+              <h1 class="product-title" itemprop="name"><%= @product.name %></h1>
+              <h4 class="product-designer">par <%= link_to @designer.givenname + " " + @designer.lastname, designer_path(@designer), class: 'designer_link' %></h4>
+              <h4 class="price"><%= display_price(@product) %></h4>
+              <% if @product.level == 'precommande'  %>
+                <h4 class='presale' data-toggle="tooltip" data-placement="top" title="Le prix indiqué est celui du vêtement en pré-commande, qui est limité dans le temps. La jauge indique le nombre de jours restants avant de passer aux prix normal.
+                "><%= Spree.t('Tarif valable encore') %> <%= @daysleft %> <%= Spree.t('jours') %></h4>
+                <div class="w3-light-grey">
+                  <div class="w3-violet" style="height:24px;width:<%= @presale_percent %>%"></div>
+                </div>
+              <% end %>
+
+
+              <div id="cart-form" data-hook="cart_form">
+                <%= render partial: 'cart_form' %>
+              </div>
+              <div class="" itemprop="description" data-hook="description">
+                <h4><%= Spree.t('Déscription') %></h4>
+                <%= product_description(@product) %>
+                <% if  @product_properties%>
+
+
+                <% @product_properties.each do |product_property| %>
+                  <% css_class = cycle('even', 'odd', name: "properties") %>
+                  <tr class="<%= css_class %>">
+                    <td><h4><%= product_property.property.presentation %></h4></td>
+                    <td><%= product_property.value %></td>
+                  </tr>
+                <% end %>
+                <% end %>
+              </div>
+              <div class="share-socials hidden-md hidden-sm hidden-lg">
+                  <h6><%= Spree.t('Partagez') %></h6>
+                  <div class="share">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=#{base_url + original_fullpath}" target="_blank">
+                      <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a class="twitter-share-button"
+                      href="https://twitter.com/intent/tweet?text=<%= request.original_url%>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.pinterest.com/pin/create/button/" target="_blank">
+                      <i class="fa fa-pinterest" aria-hidden="true"></i>
+                    </a>
+                  </div>
+              </div>
+            </div>
+
+            <!-- <div id="taxon-crumbs" class=" five " data-hook="product_taxons">
+              <%#= render partial: 'taxons' %>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+    <div class="associate_products">
+      <h2>Vous aimerez <span class="violet">aussi</span></h2>
+      <% @products.limit(2).each do |product| %>
+        <!-- A METTRE DANS UN HELPER !!!  -->
+        <% @designer = Spree::Designer.find(product.designer_id) %>
+        <% if product.level == 'precommande' %>
+          <% @daysleft = (product.date_of_sale - DateTime.now.to_date).to_i %>
+          <% @presale_time = (product.date_of_sale - @product.available_on.to_date).to_i %>
+          <% @presale_percent = 100 -(100 / @presale_time * @daysleft) %>
+        <% end  %>
+        <!-- A METTRE DANS UN HELPER !!!  -->
+        <div class="col-xs-12 col-sm-6 product_associate">
+          <div class="col-xs-12 col-sm-8 product_associate_image">
+            <div class="panel panel-default associate-panel" data-hook>
+              <div class="panel-body text-center">
+                <%= link_to product do  %>
+                  <%= large_image(product, itemprop: "image") %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-4 product_associate_content <%= mobile_device? ? 'wrap' : '' %>" >
+            <%= link_to product do  %>
+
+            <h1 class="product-title" itemprop="name"><%= product.name %></h1>
+            <% end %>
+              <h4 class="product-designer">par <%= link_to @designer.givenname + " " + @designer.lastname, designer_path(@designer), class: 'designer_link' %></h4>
+              <h4 class="price"><%= display_price(product) %></h4>
+              <% if product.level == 'precommande'  %>
+                <h4 class='presale' data-toggle="tooltip" data-placement="top" title="Le prix indiqué est celui du vêtement en pré-commande, qui est limité dans le temps. La jauge indique le nombre de jours restants avant de passer aux prix normal.
+                "><%= Spree.t('Tarif valable encore') %> <%= @daysleft %> <%= Spree.t('jours') %></h4>
+                <div class="w3-light-grey">
+                  <div class="w3-violet" style="height:24px;width:<%= @presale_percent %>%"></div>
+                </div>
+              <% end %>
+              <a href="<%= product_path(product) %>" class="btn-violet"><%= Spree.t('Découvrir') %></a>
+          </div>
+        </div>
+      <% end %>
+        <div class="drafts-in-product">
+          <h2>Votez pour <br> <span class="violet">les futures créations</span></h2>
+          <% @drafts.each do |draft| %>
+          <div class="col-xs-12 col-sm-4">
+
+            <%= large_image(draft, itemprop: "image") %>
+            <div class="draft-content">
+              <br>
+              <h4><%= draft.name %></h4>
+              <br>
+              <p> <%= draft.get_upvotes.size.to_s %> votes</p>
+              <br>
+              <%= link_to 'Votez', product_path(draft), class: 'btn-violet' %>
+            </div>
+          </div>
+
+          <% end %>
+          <div style="height: 220px"><h2> </h2></div>
+        </div>
+    </div>
+  </div>
+
+
+  <% unless mobile_device? %>
+    </div>
+  <% end %>
+
+
+
+
+
+
+
+
+<% else %>
+<%= render template: 'spree/products/draft_show' %>
+<% end %>
+
+
+<script>
+  $('.presale').tooltip();
+  var cw = $('.product_associate  .panel-body img').width();
+  $('.product_associate .panel-body img').css({'height':cw+'px'});
+  $('.product_associate .product_associate_content').css({'height':cw+'px'});
+</script>

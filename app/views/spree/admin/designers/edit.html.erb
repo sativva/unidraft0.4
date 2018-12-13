@@ -1,0 +1,84 @@
+<%= render partial: 'spree/admin/shared/designer_tabs', locals: { current: :details } %>
+<%#= render partial: 'spree/admin/designers/designer_page_actions' %>
+
+<% content_for :page_title do %>
+  <%#= @designer.givenname + " " + @designer.lastname %>
+<% end %>
+
+<div data-hook="admin_designer_edit_form">
+  <%= form_for [:admin, @designer], as: :designer, url: spree.admin_designer_url(@designer), html: { multipart: true }, method: :put do |f| %>
+    <%= render partial: 'form', locals: { f: f } %>
+
+    <div data-hook="admin_designer_edit_form_button">
+      <%= render partial: 'spree/admin/shared/edit_resource_links', locals: { collection_url: spree.admin_designers_url } %>
+    </div>
+  <% end %>
+</div>
+
+
+<!-- <div data-hook="admin_designer_edit_general_settings" class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title">
+      <%#= Spree.t(:general_settings) %>
+    </h1>
+  </div>
+
+  <div class="panel-body">
+    <div data-hook="admin_designer_edit_form_header">
+      <%#= render partial: 'spree/admin/shared/error_messages', locals: { target: @designer } %>
+    </div>
+
+    <div data-hook="admin_designer_edit_form">
+      <%#= form_for [:admin, @designer], as: :designer, url: spree.admin_designer_url(@designer), method: :put do |f| %>
+        <%#= render partial: 'form', locals: { f: f } %>
+
+        <div data-hook="admin_designer_edit_form_button">
+          <%#= render partial: 'spree/admin/shared/edit_resource_links', locals: { collection_url: spree.admin_designers_url } %>
+        </div>
+      <%# end %>
+    </div>
+  </div>
+</div>
+
+<div data-hook="admin_designer_api_key" id="admin_designer_edit_api_key" class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title">
+      <%#= Spree.t('access', scope: 'api') %>
+    </h1>
+  </div>
+
+  <div class="panel-body">
+    <%# if @designer.spree_api_key.present? %>
+      <div class="form-group">
+        <div id="current-api-key">
+          <label><%#= Spree.t('key', scope: 'api') %>: </label>
+          <strong><%#= @designer.spree_api_key %></strong>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%#= form_tag spree.clear_api_key_admin_designer_path(@designer), method: :put do %>
+          <%#= button Spree.t('clear_key', scope: 'api'), 'delete', 'submit', class: "btn-danger" %>
+        <%# end %>
+
+        <span class="or"><%#= Spree.t(:or)%></span>
+
+        <%#= form_tag spree.generate_api_key_admin_designer_path(@designer), method: :put do %>
+          <%#= button Spree.t('regenerate_key', scope: 'api'), 'save' %>
+        <%# end %>
+      </div>
+
+    <%# else %>
+
+      <div class="alert alert-warning"><%#= Spree.t('no_key', scope: 'api') %></div>
+
+      <div class="form-actions">
+        <%#= form_tag spree.generate_api_key_admin_designer_path(@designer), method: :put do %>
+          <%#= button Spree.t('generate_key', scope: 'api'), 'key' %>
+        <%# end %>
+      </div>
+    <%# end %>
+  </div>
+</div>
+
+<%#= render 'spree/admin/designers/lifetime_stats' %>
+ -->

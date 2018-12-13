@@ -1,0 +1,3 @@
+$("#like_<%= @product.id %>").removeClass('glyphicon-heart').addClass('glyphicon-heart-empty');
+$("#like_<%= @product.id %>").attr("href", '/products/<%= @product.id %>/vote2');
+$("#likes_<%= @product.id %>").html("<%= j (render partial: 'spree/products/vote2', locals: { product: @product } ) %>");

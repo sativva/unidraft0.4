@@ -1,0 +1,133 @@
+.product-list-item {
+  height: 100%;
+}
+
+.up-side {
+  min-height: 300px;
+}
+.to_prod {
+  width: 10px;
+  height: 80%;
+  margin-top: 10%;
+}
+.progress-bar {
+  width: 100%;
+}
+
+.panel-footer {
+  height: 70px;
+}
+.product-designer {
+  display: inline-grid;
+  font-size: 0.8em;
+  float: right;
+  width: 100%;
+}
+.small-designer-pic {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin: auto;
+}
+.w3-violet {
+  color: #fff!important;
+  background-color: $button!important;
+}
+.btn-success, .btn-success:hover, .btn-success:active, .btn-success:visited {
+  background-color: $button;
+      border-color: $button;
+}
+.product-body {
+  height: 100%;
+  img.featured {
+    height: 80vh;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+.product_info {
+  right: 50px;
+  position: absolute;
+  th, td {
+    text-align: center;
+  }
+}
+h1.product-title {
+  margin: 0px;
+}
+h4.product-designer {
+  display: inherit;
+  margin: 0px;
+}
+h4.price {
+  margin-top: 25px;
+  margin-bottom: 0;
+  font-weight: 300;
+}
+h4.presale {
+  margin: 0 0 15px 0;
+  text-transform: lowercase;
+  font-size: 0.9em;
+}
+.designer_link {
+  text-decoration: underline;
+}
+.share {
+  // display: inline-flex;
+  a {
+    margin: 0 4px;
+  }
+}
+.mobile {
+  ul#product-carousel {
+    list-style: none;
+    padding-left: 0;
+    width: 100vw;
+    height: 250px;
+  }
+
+  .thumbs {
+     width: 100vw;
+     height: 366px;
+     overflow: hidden;
+  }
+
+  .thumbs ul {
+      /* 4 images donc 4 x 100% */
+     width: 400%;
+     height: 200px;
+     padding:0; margin:0;
+     list-style: none;
+  }
+  .thumbs li {
+     float: left;
+  }
+  .thumbs li img{
+     padding-top: 0;
+     float: left;
+     min-width: 100vw;
+     height: 100px;
+     object-fit: cover;
+     border: none;
+  }
+  .col-xs-12.col-sm-8 {
+    padding: 0;
+  }
+  .thumbnail {
+    padding: 0;
+  }
+  .arrow-right {
+      right: 35px;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+  }
+
+
+}
+.likes {
+    margin-right: 12px;
+    // vertical-align: middle;
+    line-height: 38px;
+    font-size: 19px;
+}
+

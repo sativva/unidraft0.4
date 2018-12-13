@@ -1,0 +1,267 @@
+#mainNav.affix-top  a.navbar-brand {
+  color: black;
+}
+
+#mainNav.affix-top  p.tagline {
+  color: black;
+  @media (min-width: 768px) {
+    transition:1s;
+  }
+}
+#mainNav.affix p.tagline {
+  color: white;
+  @media (min-width: 768px) {
+    transition:1s;
+  }
+}
+#mainNav {
+  z-index: 33;
+  padding: 0;
+  .container {
+    margin-top: 14px;
+  }
+}
+#bs-example-navbar-collapse-1 {
+  padding-top: 10px;
+}
+#spree-header .nav a {
+    color: black;
+}
+#spree-header, #spree-header #header {
+  background: transparent;
+}
+p.tagline {
+  text-align: center;
+  top: -16px;
+  position: relative;
+  margin-bottom: 30px;
+}
+.navbar-custom {
+  background-color: rgba(255,255,255,1);
+  color: black !important;
+  border-color: transparent;
+}
+@media (max-width: 768px) {
+  li#youredesigner {
+    margin-bottom: 15px;
+  }
+  .fa.fa-user-o {
+    position: fixed;
+    top: 25px;
+    right: 10px;
+  }
+  ul.navbar-nav  {
+    display: block !important;
+  }
+  .navbar-header {
+    display: inline-flex !important;
+    top: -16px;
+    position: relative;
+
+    button {
+      margin-left: 10px;
+      width: 100%;
+    }
+    p.tagline {
+        text-align: center;
+        top: -16px;
+        width: 200px;
+    }
+  }
+
+  #mainNav {
+    height: 64px;
+  }
+  .navbar-collapse {
+    background: white;
+    top: -20px;
+    position: relative;
+  }
+
+}
+ul.navbar-nav  {
+  display: flex;
+  float: initial;
+  li {
+    flex: 1 1 20%;
+    a {
+      text-align: center;
+    }
+  }
+
+}
+
+.navbar-header {
+  float: initial;
+}
+@media (max-width: 768px) {
+  .navbar-brand {
+    width: 50% !important;
+  }
+}
+.navbar-brand {
+  width: 100%;
+  text-align: center;
+  button {
+    font-size: 13px;
+    position: absolute;
+    right: 10px;
+  }
+}
+.brand-cont {
+  width: 100%;
+  height: 37px;
+}
+.navbar-brand a {
+  color: black !important;
+}
+.navbar-custom .navbar-brand {
+  color: black;
+  font-family: 'Fredericka the Great', "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .navbar-brand:active,
+.navbar-custom .navbar-brand.active {
+  color: black;
+}
+.navbar-custom .navbar-collapse {
+  border-color: rgba(255, 255, 255, 0.02);
+}
+.navbar-custom .navbar-toggle {
+  background-color: $button;
+  border-color: $button;
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+  height: 50px;
+  width: 50px;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: $button;
+}
+.navbar-custom .nav li a {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: black;
+  font-size: 12px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li a:focus {
+  color: $button;
+  outline: none;
+}
+.navbar-custom .navbar-nav > .active > a {
+  border-radius: 0;
+  background-color: transparent;
+  p {
+    border-bottom: 1px solid $button;
+  }
+
+}
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+  color: $button;
+  background-color: transparent;
+}
+@media (min-width: 768px) {
+  .navbar-custom {
+    background-color: transparent;
+    padding: 25px 0;
+    -webkit-transition: padding 0.3s;
+    -moz-transition: padding 0.3s;
+    transition: padding 0.3s;
+    border: none;
+  }
+  .navbar-custom .navbar-brand {
+    margin-top: 4px;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .navbar-custom .navbar-nav > .active > a {
+    border-radius: 3px;
+  }
+  .navbar-custom.affix {
+    background-color: rgba(255,255,255,1);
+    padding: 10px 0;
+  }
+  .navbar-custom.affix .navbar-brand {
+    font-size: 3.1em;
+  }
+  #myaccount {
+    position: absolute;
+    top: 20px;
+    right: 10%;
+    font-size: 50px;
+
+  }
+  #link-to-cart {
+    position: absolute;
+    top: 20px;
+    right: calc(10% + 40px);
+    font-size: 20px;
+  }
+  #youredesigner {
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    text-transform: initial;
+    a {
+      text-transform: initial;
+      padding-left: 0;
+    }
+  }
+  ul.navbar-nav {
+    margin: 0 25%;
+  }
+}
+@media (max-width: 768px) {
+  div.navbar-nav  {
+    display: block;
+    float: right;
+  }
+  .account {
+    height: 33px;
+    top: 16px;
+    position: absolute;
+    right: 10px;
+  }
+  #link-to-cart {
+    top: 16px;
+    position: absolute;
+    right: 35px;
+    width: 75px;
+
+  }
+  .navbar-brand {
+    height: 66px;
+    line-height: 33px;
+    text-align: left;
+  }
+  .navbar-header {
+    width: 100%;
+  }
+  #nav-mobile {
+    display: block;
+    line-height: 33px;
+    list-style: none;
+    width: 100%;
+    li {
+      margin-right: 12px;
+      float: right;
+      line-height: 66px;
+    // margin: 15px 50px 5px 0;
+    }
+    li.account {
+      position: relative;
+      // top: -65px;
+    }
+  }
+}
+

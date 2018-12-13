@@ -1,0 +1,39 @@
+<%# no need for thumbnails unless there is more than one image %>
+<div class="thumbs" <%= @product.images.length > 3 ? 'style=margin-top:50px;' : '' %>>
+<% if (@product.images + @product.variant_images).uniq.size > 1 %>
+  <ul id="product-thumbnails" class="thumbnails" data-hook >
+    <% @images = @product.images.reverse.take(5) %>
+    <% @images.each do |i| %>
+      <li class='tmb-all tmb-<%= i.viewable.id %>'>
+        <%= link_to(image_tag(i.attachment.url(:large), class: "thumbnail"), i.attachment.url(:large)) %>
+      </li>
+    <% end %>
+
+    <% if @product.has_variants? %>
+      <% @product.variant_images.each do |i| %>
+        <% next if @product.images.include?(i) %>
+        <li class='vtmb tmb-<%= i.viewable.id %>'>
+          <%= link_to(image_tag(i.attachment.url(:large), class: "thumbnail"), i.attachment.url(:large)) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <% if @product.images.length > 3 %>
+    <div class="arrow arrow-up"></div>
+    <div class="arrow arrow-down"></div>
+  <% end %>
+
+<% end %>
+<script>
+  $('.arrow-up').click(function(){
+    $("#product-thumbnails").animate({marginTop:-120},800,function(){
+       $(this).css({marginTop:0}).find("li:last").after($(this).find("li:first"));
+    })
+  });
+  $('.arrow-down').click(function(){
+    $("#product-thumbnails").animate({marginTop:-120},800,function(){
+       $(this).css({marginTop:0}).find("li:last").after($(this).find("li:first"));
+    })
+  });
+</script>
+</div>

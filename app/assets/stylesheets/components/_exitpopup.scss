@@ -1,0 +1,26 @@
+#exitpopup {
+  text-align:center;
+  font-family: $base-font;
+  color: $black;
+  width:670px;
+  height:250px;
+  margin:0px auto;
+  position:fixed;
+  padding:20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  z-index:999999;
+  background:rgb(20, 20, 20);
+  background:rgba(255, 255, 255, 0.6);
+  display: none;
+  h1 {
+    margin:0px;
+    padding:0px;
+  }
+  p {
+    text-align:left;
+  }
+}
+
+

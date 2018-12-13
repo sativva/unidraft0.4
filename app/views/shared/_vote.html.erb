@@ -1,0 +1,27 @@
+<div class="col-xs-6">
+
+  <% if current_spree_user %>
+    <div class="inline">
+      <div class="likes" id="likes_<%= @product.id %>" >
+        <%= (display_likes @product).to_i + 20 %>
+      </div>
+      <% if current_spree_user.liked? @product %>
+        <%= link_to '', unvote_product_path(@product.id), remote: true,
+                              id: "like_#{@product.id}",
+                              class: "glyphicon glyphicon-heart" %>
+      <% else %>
+        <%= link_to '', vote2_product_path(@product.id), remote: true,
+                              id: "like_#{@product.id}",
+                              class: "glyphicon glyphicon-heart-empty" %>
+      <% end %>
+      <br>
+    </div>
+    <% else %>
+      <div class="likes" id="likes_<%= @product.id %>">
+        <%= (display_likes @product).to_i + 20 %> <i class="fa fa-heart"></i>
+        <%= link_to spree.login_path do %>
+         <p class="connect"> connectez-vous !</p>
+       <% end %>
+      </div>
+  <% end %>
+</div>

@@ -1,0 +1,80 @@
+<div class="wrap">
+  <h1><%= accurate_title %></h1>
+  <% @spree_user = @user %>
+
+    <% if @user.all_following.size > 0 %>
+    <div class="row">
+      <div class="following col-xs-12">
+        <h3 class="center"><%= Spree.t(:my_designers) %></h3>
+        <br>
+        <br>
+        <% @user.all_following.each do |my_designer|%>
+          <%= render partial: 'spree/shared/designer_card', locals: { designer: my_designer, products: Spree::Product.all } %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+    <% products = [] %>
+    <% @user.votes.up.each do |my_vote|%>
+      <% product = Spree::Product.find(my_vote.votable.id) %>
+      <% if product.publish %>
+        <% products << product %>
+      <% end %>
+    <% end %>
+    <% if products.count > 0 %>
+      <div class="row">
+        <div class="upvote col-xs-12">
+          <h3 class="center"><%= Spree.t(:my_votes) %></h3>
+          <br>
+          <br>
+          <% products.each do |product|%>
+            <% if product.level == 'croquis' %>
+              <%= render partial: 'spree/shared/product_card', locals: { product: product  } %>
+            <% else %>
+              <%= render partial: 'spree/shared/product_card', locals: { product: product } %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div data-hook="account_my_orders" class="account-my-orders">
+      <% if @orders.present? %>
+         <h4><%= Spree.t(:my_orders) %></h4>
+        <table class="table table-striped order-summary">
+          <thead class="active">
+          <tr>
+            <th class="order-number"><%= Spree::Order.human_attribute_name(:number) %></th>
+            <th class="order-date"><%= Spree.t(:date) %></th>
+            <th class="order-status"><%= Spree.t(:status) %></th>
+            <th class="order-payment-state"><%= Spree.t(:payment_state) %></th>
+            <th class="order-shipment-state"><%= Spree.t(:shipment_state) %></th>
+            <th class="order-total"><%= Spree.t(:total) %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td class="order-number"><%= link_to order.number, order_url(order) %></td>
+              <td class="order-date"><%= l order.completed_at.to_date %></td>
+              <td class="order-status"><%= Spree.t("order_state.#{order.state}").titleize %></td>
+              <td class="order-payment-state"><%= Spree.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
+              <td class="order-shipment-state"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
+              <td class="lead text-primary order-total"><%= order.display_total %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="alert alert-info"><%= Spree.t(:you_have_no_orders_yet) %></div>
+      <% end %>
+    </div>
+
+    <div data-hook="account_summary" class="account-summary well">
+      <dl id="user-info">
+        <dt><%= Spree.t(:email) %></dt>
+        <dd><%= @user.email %> (<%= link_to Spree.t(:edit), spree.edit_account_path %>)</dd>
+      </dl>
+    </div>
+
+
+</div>

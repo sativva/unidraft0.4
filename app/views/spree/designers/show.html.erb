@@ -1,0 +1,92 @@
+<% @body_id = 'designer-show' %>
+
+
+<div class="wrap">
+<div class="designer-show">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.1) 0%, rgba(0,36,61,0.1) 50%), url(<%= @designer.banner? ? cl_image_path(@designer.banner(:large)) : cl_image_path("UnidraftUpper.png") %>)">
+  <div class="banner-content banner-designer">
+    <h1><%= @designer.givenname %><br><%= @designer.lastname %></h1>
+    <p><%= @designer.school %></p>
+    <div class="follow-show">
+      <% if current_spree_user %>
+        <%= link_to follow_designer_url(@designer), remote: true, controller: "designers", action: "follow", method: :put, class: 'follow' do %>
+            <% if current_spree_user.following?(@designer) %>
+              <i class="fa fa-star dore" aria-hidden="true"></i>
+            <% else %>
+              <i class="fa fa-star" aria-hidden="true"></i>
+            <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="social">
+<!-- <p id="notice"><%= notice %></p> -->
+  <% unless @designer.linkedin.nil?   %>
+    <% unless @designer.linkedin.empty?   %>
+      <%= link_to @designer.linkedin do%>
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% unless  @designer.instagram.nil?  %>
+    <% unless  @designer.instagram.empty?  %>
+      <%= link_to @designer.instagram do%>
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% unless @designer.facebook.nil? %>
+    <% unless @designer.facebook.empty? %>
+      <%= link_to @designer.facebook do%>
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% unless @designer.website.nil? %>
+    <% unless @designer.website.empty? %>
+      <%= link_to @designer.website do%>
+        <i class="fa fa-address-card-o" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+<br><br>
+
+
+  <div>
+    <h2><%= Spree.t('les creations') %></h2>
+
+    <% envente = @products.where(level: ['en vente', 'precommande']) %>
+    <% auxvotes = @products.where(level: 'croquis') %>
+    <% unless envente.empty? %>
+    <div class="row">
+    <h4>En vente</h4>
+      <% envente.each do |product| %>
+        <%= render partial: 'spree/shared/product_card', locals: { product: product, taxon: @taxon } %>
+      <% end %>
+    <% end %>
+    </div>
+    <div class="row">
+    <% unless auxvotes.empty? %>
+      <h4>En projet</h4>
+      <% auxvotes.each do |product| %>
+        <%= render partial: 'spree/shared/draft_card', locals: { product: product } %>
+      <% end %>
+    <% end %>
+    </div>
+
+
+  </div>
+  <div class="col-md-12 page-body">
+    <div class="row hidden-xs">
+      <%= raw @designer.interview %>
+    </div>
+  </div>
+
+
+
+</div>

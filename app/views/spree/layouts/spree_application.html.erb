@@ -1,0 +1,85 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+  <head data-hook="inside_head">
+    <%= render partial: 'spree/shared/head' %>
+  </head>
+  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+    <%= render partial: 'spree/shared/google_analytics.js' %>
+      <%= render partial: 'spree/shared/header' %>
+
+    <div class="container">
+      <div class="row" data-hook>
+        <%#= breadcrumbs(@taxon) %>
+
+        <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
+
+        <div id="content" class="<%= !content_for?(:sidebar) ? "col-sm-12" : "col-sm-8 col-md-9" %>" data-hook>
+          <%= flash_messages %>
+          <div style="height: 110px"></div>
+
+          <%= yield %>
+        </div>
+
+        <%= yield :templates %>
+
+      </div>
+    </div>
+    <%= render partial: 'spree/shared/footer' %>
+    <% if mobile_device? %>
+      <%= javascript_include_tag 'spree/mobile' %>
+
+      <script>
+      $( document ).on('pageshow', '.ui-page', function() {
+        $('a').each(function() {
+          // $(this).attr('rel', 'external');
+        });
+        $('.grid-masonry').masonry({
+            itemSelector: '.grid-item',
+            columnWidth: '.grid-sizer',
+            gutter: '.gutter-sizer',
+            transitionDuration: '0.8s',
+            rowHeight: 15,
+            percentPosition: true
+          });
+        // setTimeout(function(){
+        //   $('a.page-scroll').bind('click', function(event) {
+        //       var $anchor = $(this);
+        //       $('html, body').stop().animate({
+        //           scrollTop: ($($anchor.attr('href')).offset().top - 80)
+        //       }, 1250, 'easeInOutExpo');
+        //       event.preventDefault();
+        //   });
+
+        //   // Highlight the top nav as scrolling occurs
+        //   $('body').scrollspy({
+        //       target: '.navbar-fixed-top',
+        //       offset: 51
+        //   });
+
+        //   // Closes the Responsive Menu on Menu Item Click
+        //   $('.navbar-collapse ul li a').click(function(){
+        //           $('.navbar-toggle:visible').click();
+        //   });
+
+        //   // Offset for Main Navigation
+        //   $('#mainNav').affix({
+        //       offset: {
+        //           top: 1
+        //       }
+        //   });
+
+
+
+
+
+
+        // }, 1000);
+      });
+      </script>
+    <% end %>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+#product-variants ul.variant-option-values {
+  display: flex;
+}
+button, html [type=button], [type=reset], [type=submit] {
+  -webkit-appearance: initial;
+}
+#inside-product-cart-form {
+  padding: 0 17px;
+}
+.variant-option-type {
+  i {
+    text-transform: lowercase;
+    text-decoration: underline;
+    margin-left: 20px;
+  }
+}

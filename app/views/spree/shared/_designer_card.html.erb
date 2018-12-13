@@ -1,0 +1,80 @@
+<% @envente = @products.where(level: ['en vente', 'precommande'], designer_id: designer.id) %>
+<% @auxvotes = @products.where(level: 'croquis', designer_id: designer.id) %>
+<div id="designer<%= designer.id %>" class="designer-card col-xs-12 col-sm-5">
+  <%= link_to designer do %>
+  <div class="designer-profilepic">
+    <%= cl_image_tag(designer.banner) %>
+  </div>
+  <div class="followo">
+  <% if current_spree_user %>
+    <%= link_to follow_designer_url(designer), remote: true, controller: "designers", action: "follow", method: :put, class: 'btn-violet vpos follow' do %>
+      <% if spree_current_user.following?(designer) %>
+        <i class="fa fa-star dore" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+
+  <% else %>
+    <h6>Connectez vous pour ajouter ce designer à vos favoris</h6>
+    <i class="fa fa-star" aria-hidden="true"></i>
+  <% end %>
+  </div>
+
+
+  <div class="content">
+    <div class="designer-head">
+      <h2 class="designer-name"><%= designer.givenname %> <br><span class="violet"> <%= designer.lastname %></span></h2>
+    </div>
+  </div>
+
+    <div class="designer-numbers">
+      <p>
+        <% if designer.followers_count %>
+          followers : <%= designer.followers_count %> -
+        <% else %>
+          followers : 0 -
+        <% end %>
+      </p><p>en vente : <%= @envente ? @envente.count : "0" %> - </p><p>aux votes : <%= @auxvotes ? @auxvotes.count : "0" %> </p>
+    </div>
+    <% end %>
+    <div>
+      <!-- a mettre dans unn helper -->
+      <% designer_prods = products.where(designer_id: designer.id, publish: true) %>
+      <!-- a mettre dans unn helper -->
+
+      <% if !designer_prods.empty? %>
+        <h6><%= Spree.t('les-creations') %></h6>
+        <% if designer_prods.length > 1 %>
+        <div class="designer_prod_slide">
+         <ul>
+            <% designer_prods.each do |i| %>
+              <li>
+                <%= cl_image_tag(i.images[0].attachment(:large)) %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <% else %>
+          <div class="designer_prod_single">
+            <%= cl_image_tag(designer_prods[0].images[0].attachment(:large)) %>
+            <div style="height: 5px;"></div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
+
+
+<script type="text/javascript">
+
+   $(function(){
+
+      setInterval(function(){
+         $(".designer_prod_slide ul").animate({marginLeft:-300},5000,function(){
+            $(this).css({marginLeft:0}).find("li:last").after($(this).find("li:first"));
+         })
+      }, 5000);
+   });
+</script>
