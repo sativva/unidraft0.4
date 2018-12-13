@@ -1,1 +1,6 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Application presentant des créations vestimentaires en prévente sur croquis et à la vente après production. Presentation des créateurs, des croquis, et des vetements, likes, dashboard, admin.
+
+gem ecommerce 'SpreeCommerce'
+gestion des paiements Stripe.
+
+projet outdated
